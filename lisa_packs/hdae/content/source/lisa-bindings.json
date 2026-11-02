@@ -1,0 +1,349 @@
+{
+  "schema_version": 1,
+  "generator_version": "1",
+  "source_revision": "12d1a3389e74642dddee47a6cc4cb217f55f1144",
+  "backend_status": "experimental_runtime",
+  "dependencies": [
+    "Current kernel and SDK must parse mandatory pre-turn preparation with abort-on-failure and checked-commit completion metadata.",
+    "Deterministic E2E passes real catalogs/registries, durable approvals/workproduct storage, coding+bwrap+Git, generated execute mode, scripted provider gateway, actual worker turn, checked-commit verification and top review.",
+    "Producer-bound completion proof requires reconciliation on the current revision and fresh gate, governing, and declared build input/output files; live-model convergence remains unverified.",
+    "Coding and bwrap must be installed and session checks configured; source edits are exposed only through guarded hdae_edit, never raw coding tools.",
+    "Batch delegation, deferral, reopening, explicit recovery, human criteria and export full rerun are unsupported; QEMU fixtures and accounting remain unverified."
+  ],
+  "adaptations": [
+    "Six catalog modes include five artifact-facing top modes and the guarded hdae_execute action mode.",
+    "The Implement role uses mandatory hdae_prepare, abort-on-failure and checked_commit completion through hdae_verify, without claiming full spec conformance.",
+    "Top modes are explicitly invoked, non-routable and reject ambient default capability injection. Publication is not execution authorization.",
+    "Lisa modes and explicit live artifact reads replace copied-skill discovery. Recovery/reload mechanics remain a host dependency.",
+    "Source maintenance compares explicit commit snapshots and reviewed diffs, not the upstream installer's floating main.",
+    "Runtime uses exact decimal ordering, protected gate authority, exclusive task claims and SDK transactional workspace documents.",
+    "Runtime supports isolated worktrees and checked commits; current-branch execution, QEMU profiles and historical import policy are not supported here."
+  ],
+  "capabilities": [
+    {"capability_id": "hdae_publish_artifact", "module_path": "lisa_packs.hdae.operations.hdae_publish_artifact", "status": "experimental_runtime"},
+    {"capability_id": "hdae_define_gate", "module_path": "lisa_packs.hdae.operations.hdae_define_gate", "status": "experimental_runtime"},
+    {"capability_id": "hdae_authorize", "module_path": "lisa_packs.hdae.operations.hdae_authorize", "status": "experimental_runtime"},
+    {"capability_id": "hdae_prepare", "module_path": "lisa_packs.hdae.operations.hdae_prepare", "status": "experimental_runtime"},
+    {"capability_id": "hdae_edit", "module_path": "lisa_packs.hdae.operations.hdae_edit", "status": "experimental_runtime"},
+    {"capability_id": "hdae_run_check", "module_path": "lisa_packs.hdae.operations.hdae_run_check", "status": "experimental_runtime"},
+    {"capability_id": "hdae_verify", "module_path": "lisa_packs.hdae.operations.hdae_verify", "status": "experimental_runtime"},
+    {"capability_id": "hdae_accept", "module_path": "lisa_packs.hdae.operations.hdae_accept", "status": "experimental_runtime"},
+    {"capability_id": "hdae_status", "module_path": "lisa_packs.hdae.operations.hdae_status", "status": "experimental_runtime"},
+    {"capability_id": "hdae_export", "module_path": "lisa_packs.hdae.operations.hdae_export", "status": "experimental_runtime"}
+  ],
+  "optional_exported_tool_ids": [],
+  "modes": [
+    {
+      "mode_id": "hdae_architect",
+      "mode_kind": "chat",
+      "description": "Discover and refine confirmed product intent and architecture.",
+      "template_path": "content/templates/hdae_architect.md",
+      "activation": "catalog",
+      "allowed_operation_ids": ["hdae_publish_artifact", "hdae_status", "hdae_export"],
+      "allowed_tool_ids": [],
+      "rule_ids": ["responsibility", "method_roles", "discovery", "ambiguity", "durable_context", "establish", "context_recovery"]
+    },
+    {
+      "mode_id": "hdae_use_cases",
+      "mode_kind": "chat",
+      "description": "Clarify user workflows, boundaries and observable success.",
+      "template_path": "content/templates/hdae_use_cases.md",
+      "activation": "catalog",
+      "allowed_operation_ids": ["hdae_publish_artifact", "hdae_status", "hdae_export"],
+      "allowed_tool_ids": [],
+      "rule_ids": ["discovery", "method_roles", "traceability", "gate_quality", "durable_context", "context_recovery"]
+    },
+    {
+      "mode_id": "hdae_plan",
+      "mode_kind": "chat",
+      "description": "Plan proportionate gates, dependencies and human checkpoint boundaries.",
+      "template_path": "content/templates/hdae_plan.md",
+      "activation": "catalog",
+      "allowed_operation_ids": ["hdae_publish_artifact", "hdae_define_gate", "hdae_authorize", "hdae_status"],
+      "allowed_tool_ids": [],
+      "rule_ids": ["proportional_plan", "gate_alignment", "gate_quality", "gate_template", "ledger_layout", "batch_authority", "delivery_strategy"]
+    },
+    {
+      "mode_id": "hdae_decide",
+      "mode_kind": "chat",
+      "description": "Resolve consequential direction, alternatives and authorized scope changes.",
+      "template_path": "content/templates/hdae_decide.md",
+      "activation": "catalog",
+      "allowed_operation_ids": ["hdae_publish_artifact", "hdae_authorize", "hdae_status"],
+      "allowed_tool_ids": [],
+      "rule_ids": ["responsibility", "ambiguity", "corrective_work", "delivery_strategy", "durable_context"]
+    },
+    {
+      "mode_id": "hdae_evaluate",
+      "mode_kind": "chat",
+      "description": "Evaluate actual evidence, limitations and human checkpoint acceptance.",
+      "template_path": "content/templates/hdae_evaluate.md",
+      "activation": "catalog",
+      "allowed_operation_ids": ["hdae_verify", "hdae_accept", "hdae_status", "hdae_export", "hdae_define_gate"],
+      "allowed_tool_ids": [],
+      "rule_ids": ["verification", "completion_boundary", "gate_quality", "traceability", "corrective_work", "retrospective", "ledger_history"]
+    },
+    {
+      "mode_id": "hdae_execute",
+      "mode_kind": "action",
+      "description": "Iterate within a prepared authorized engineering contract using guarded edits and checked commits.",
+      "template_path": "content/templates/hdae_execute.md",
+      "activation": "catalog",
+      "allowed_operation_ids": ["hdae_prepare", "hdae_edit", "hdae_run_check", "hdae_verify", "hdae_status", "hdae_export"],
+      "allowed_tool_ids": [],
+      "pre_turn_operation_ids": ["hdae_prepare"],
+      "pre_turn_failure_policy": "abort",
+      "task_completion": "checked_commit",
+      "task_artifact_tool_id": "hdae_verify",
+      "accept_default_capabilities": false,
+      "fork_allowed": false,
+      "approval_continuation": "resume",
+      "rule_ids": ["implementation", "closed_loop", "convergence", "context_recovery", "verification", "completion_boundary", "batch_authority", "corrective_work"]
+    }
+  ],
+  "bindings": [
+    {
+      "rule_id": "responsibility",
+      "classification": "human/model judgment",
+      "scope": "advisory",
+      "capabilities": ["hdae_publish_artifact", "hdae_authorize", "hdae_accept"],
+      "content_paths": ["content/templates/hdae_architect.md", "content/templates/hdae_decide.md", "content/templates/hdae_evaluate.md"],
+      "tests": [],
+      "rationale": "Intent, adequacy and tradeoffs require human direction. Runtime consumes exact-action approvals for gate authorization and checkpoint acceptance; adequacy remains judgment."
+    },
+    {
+      "rule_id": "method_roles",
+      "classification": "human/model judgment",
+      "scope": "advisory",
+      "capabilities": [],
+      "content_paths": ["content/templates/hdae_architect.md", "content/templates/hdae_use_cases.md", "content/templates/hdae_evaluate.md"],
+      "tests": [],
+      "rationale": "High-level cross-artifact responsibilities are authored; selecting sufficient work remains contextual judgment."
+    },
+    {
+      "rule_id": "discovery",
+      "classification": "human/model judgment",
+      "scope": "advisory",
+      "capabilities": ["hdae_publish_artifact"],
+      "content_paths": ["content/templates/hdae_architect.md", "content/templates/hdae_use_cases.md", "content/templates/PROJECT.md"],
+      "tests": [],
+      "rationale": "Adaptive interviews and sufficient understanding are semantic work, not schema guarantees."
+    },
+    {
+      "rule_id": "proportional_plan",
+      "classification": "human/model judgment",
+      "scope": "advisory",
+      "capabilities": ["hdae_define_gate"],
+      "content_paths": ["content/templates/hdae_plan.md", "content/templates/PLAN.md"],
+      "tests": [],
+      "rationale": "Gate threshold, plan adequacy and estimates are contextual decisions; no standing small-request authorization is invented."
+    },
+    {
+      "rule_id": "ambiguity",
+      "classification": "human/model judgment",
+      "scope": "advisory",
+      "capabilities": [],
+      "content_paths": ["content/templates/hdae_decide.md", "content/templates/hdae_architect.md"],
+      "tests": [],
+      "rationale": "Recognizing material ambiguity and reconciling direction need human/model judgment under prevailing authority."
+    },
+    {
+      "rule_id": "convergence",
+      "classification": "human/model judgment",
+      "scope": "advisory",
+      "capabilities": ["hdae_run_check", "hdae_status"],
+      "content_paths": ["content/templates/hdae_execute.md"],
+      "tests": [],
+      "rationale": "Credible hypotheses and proportional cost remain engineering judgments within the enabled guarded execution loop."
+    },
+    {
+      "rule_id": "corrective_work",
+      "classification": "human/model judgment",
+      "scope": "advisory",
+      "capabilities": ["hdae_define_gate", "hdae_authorize"],
+      "content_paths": ["content/templates/hdae_decide.md", "content/templates/hdae_evaluate.md", "content/templates/gate.md"],
+      "tests": [],
+      "rationale": "Diagnosis and a corrective proposal require judgment. Runtime guards approved scope and locks authorized/closed gates; reopening and deferral remain unsupported."
+    },
+    {
+      "rule_id": "context_recovery",
+      "classification": "unsupported",
+      "scope": "unavailable",
+      "capabilities": ["hdae_prepare", "hdae_status"],
+      "content_paths": ["content/templates/STATUS.md", "content/templates/hdae_execute.md"],
+      "tests": [],
+      "rationale": "Mandatory hdae_prepare reloads the current contract and governing artifacts. Explicit cross-task recovery and complete instruction reload after every handoff remain unsupported; catalog changes do not prove hot reload."
+    },
+    {
+      "rule_id": "ledger_layout",
+      "classification": "unsupported",
+      "scope": "unavailable",
+      "capabilities": ["hdae_define_gate", "hdae_prepare", "hdae_status"],
+      "content_paths": ["content/templates/gate.md", "content/templates/PLAN.md"],
+      "tests": [],
+      "rationale": "Runtime provides protected authority, exact decimal ordering and dependency closure checks. Full ledger conformance, including unique decimal-position enforcement, is not certified."
+    },
+    {
+      "rule_id": "ledger_history",
+      "classification": "unsupported",
+      "scope": "unavailable",
+      "capabilities": ["hdae_define_gate", "hdae_accept"],
+      "content_paths": ["content/templates/gate.md"],
+      "tests": [],
+      "rationale": "Runtime locks closed/authorized gates and preserves checkpoint closure records. Guarded reopening, deferral and reactivation transitions are unsupported."
+    },
+    {
+      "rule_id": "gate_template",
+      "classification": "enforced",
+      "scope": "authoring",
+      "capabilities": [],
+      "content_paths": ["content/templates/gate.md"],
+      "tests": ["tests/test_manifest.py::test_gate_template_sections"],
+      "rationale": "manifest.load_manifests checks only the shipped template's exact substantive heading set/order. It does not validate live gate prose, completeness, authority or passage."
+    },
+    {
+      "rule_id": "delivery_strategy",
+      "classification": "human/model judgment",
+      "scope": "advisory",
+      "capabilities": ["hdae_define_gate", "hdae_authorize"],
+      "content_paths": ["content/templates/gate.md", "content/templates/hdae_plan.md", "content/templates/hdae_decide.md"],
+      "tests": [],
+      "rationale": "Runtime supports isolated-worktree checked commits and checks required PR delivery, but does not create PRs here. Current-branch execution and automatic remote publication are unsupported."
+    },
+    {
+      "rule_id": "issue_delivery",
+      "classification": "unsupported",
+      "scope": "unavailable",
+      "capabilities": [],
+      "content_paths": ["content/templates/gate.md"],
+      "tests": [],
+      "rationale": "Checked-commit Git integration exists. Recurring PR/issue review and automatic remote delivery remain unsupported."
+    },
+    {
+      "rule_id": "batch_authority",
+      "classification": "unsupported",
+      "scope": "unavailable",
+      "capabilities": ["hdae_authorize", "hdae_prepare", "hdae_accept"],
+      "content_paths": ["content/templates/hdae_plan.md", "content/templates/gate.md"],
+      "tests": [],
+      "rationale": "Individual exact gate approvals and checkpoint acceptance exist; batch grants, delegated closure, checkpoint maps and batch revocation remain unsupported."
+    },
+    {
+      "rule_id": "standing_review",
+      "classification": "unsupported",
+      "scope": "unavailable",
+      "capabilities": [],
+      "content_paths": [],
+      "tests": [],
+      "rationale": "Scheduled PR/issue review and standing future-gate delegation are outside the authorized development slice; no scheduler, secrets access or automatic management is introduced."
+    },
+    {
+      "rule_id": "gate_alignment",
+      "classification": "human/model judgment",
+      "scope": "advisory",
+      "capabilities": ["hdae_define_gate", "hdae_authorize"],
+      "content_paths": ["content/templates/hdae_plan.md", "content/templates/gate.md"],
+      "tests": [],
+      "rationale": "Human scope/coverage decisions remain judgment. Runtime requires consumed exact-action approvals rather than inferring authority from silence."
+    },
+    {
+      "rule_id": "durable_context",
+      "classification": "human/model judgment",
+      "scope": "advisory",
+      "capabilities": ["hdae_publish_artifact", "hdae_status"],
+      "content_paths": ["content/templates/PROJECT.md", "content/templates/ARCHITECTURE.md", "content/templates/PLAN.md", "content/templates/STATUS.md"],
+      "tests": [],
+      "rationale": "Templates preserve minimal authoritative roles and linking; runtime uses transactional SDK documents and expected-digest publication. Semantic adequacy remains judgment."
+    },
+    {
+      "rule_id": "establish",
+      "classification": "human/model judgment",
+      "scope": "advisory",
+      "capabilities": ["hdae_publish_artifact", "hdae_define_gate"],
+      "content_paths": ["content/templates/hdae_architect.md", "content/templates/hdae_plan.md"],
+      "tests": [],
+      "rationale": "Discovery, baseline adequacy and reviewable milestones are authored high-level engineering work."
+    },
+    {
+      "rule_id": "implementation",
+      "classification": "human/model judgment",
+      "scope": "advisory",
+      "capabilities": ["hdae_prepare", "hdae_edit", "hdae_run_check", "hdae_verify"],
+      "content_paths": ["content/templates/hdae_execute.md"],
+      "tests": [],
+      "rationale": "Enabled action mode composes guarded hdae_edit with coding/bwrap, exclusive claims and checked-commit verification. Choosing correct source changes remains engineering judgment."
+    },
+    {
+      "rule_id": "verification",
+      "classification": "unsupported",
+      "scope": "unavailable",
+      "capabilities": ["hdae_run_check", "hdae_verify"],
+      "content_paths": ["content/templates/hdae_evaluate.md", "content/templates/gate.md"],
+      "tests": [],
+      "rationale": "Runtime maps automated criteria to configured checks and verifies current tree/profile/input/output evidence. Human criteria are rejected; QEMU images/fixtures and full spec verification remain unsupported or unverified. Source hashes are not runtime evidence."
+    },
+    {
+      "rule_id": "retrospective",
+      "classification": "human/model judgment",
+      "scope": "advisory",
+      "capabilities": ["hdae_status", "hdae_export"],
+      "content_paths": ["content/templates/hdae_evaluate.md"],
+      "tests": [],
+      "rationale": "Causal interpretation and process improvements remain advisory, with no observational case-study superiority claim."
+    },
+    {
+      "rule_id": "traceability",
+      "classification": "human/model judgment",
+      "scope": "advisory",
+      "capabilities": ["hdae_verify", "hdae_status"],
+      "content_paths": ["content/templates/hdae_use_cases.md", "content/templates/hdae_evaluate.md", "content/templates/gate.md"],
+      "tests": [],
+      "rationale": "High-level completeness reviews remain judgment; even future mechanical link coverage cannot guarantee sufficient product specification."
+    },
+    {
+      "rule_id": "gate_quality",
+      "classification": "human/model judgment",
+      "scope": "advisory",
+      "capabilities": ["hdae_define_gate", "hdae_verify"],
+      "content_paths": ["content/templates/hdae_plan.md", "content/templates/hdae_evaluate.md", "content/templates/gate.md"],
+      "tests": [],
+      "rationale": "Meaningful falsifiable checks, sufficient fixtures and subjective quality require judgment; no schema guarantee is asserted."
+    },
+    {
+      "rule_id": "closed_loop",
+      "classification": "human/model judgment",
+      "scope": "advisory",
+      "capabilities": ["hdae_prepare", "hdae_run_check", "hdae_status"],
+      "content_paths": ["content/templates/hdae_execute.md"],
+      "tests": [],
+      "rationale": "Runtime provides exclusive claims and guarded iteration; engineering autonomy remains judgment. Explicit restart recovery, delegated workers and wakeups remain unsupported."
+    },
+    {
+      "rule_id": "completion_boundary",
+      "classification": "unsupported",
+      "scope": "unavailable",
+      "capabilities": ["hdae_verify", "hdae_accept", "hdae_status"],
+      "content_paths": ["content/templates/hdae_evaluate.md", "content/templates/hdae_execute.md"],
+      "tests": [],
+      "rationale": "Generated execute mode requires mandatory aborting preparation and checked_commit via hdae_verify; runtime checkpoint acceptance requires exact approval. Generated-mode/model-turn E2E remains pending; delegated closure and human criteria are unsupported, so full completion-boundary conformance is not claimed."
+    },
+    {
+      "rule_id": "installed_skill_update",
+      "classification": "unsupported",
+      "scope": "unavailable",
+      "capabilities": [],
+      "content_paths": ["content/source/upstream/README.md"],
+      "tests": [],
+      "rationale": "Lisa packaging replaces upstream copied-skill installer/discovery links. Upstream installers and instructions are read-only source data and never executed by the builder."
+    },
+    {
+      "rule_id": "read_only_updates",
+      "classification": "unsupported",
+      "scope": "unavailable",
+      "capabilities": [],
+      "content_paths": ["content/source/upstream/README.md"],
+      "tests": [],
+      "rationale": "Maintenance documentation preserves read-only comparison versus adaptation versus publication, using explicit commit pins. No automated update detector, installer or paid/unattended agent service exists."
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+operation_id: hdae_accept
+pack_id: lisa-pack-hdae
+description: Accept and close the exact passed checkpoint through operator approval.
+module_path: lisa_packs.hdae.operations.hdae_accept
+effect: write
+approval_required: true
+approval_preview: Accept this exact HDAE gate and evidence revision.
+exportable: true

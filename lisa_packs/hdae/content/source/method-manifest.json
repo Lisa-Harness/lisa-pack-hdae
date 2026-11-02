@@ -1,0 +1,337 @@
+{
+  "schema_version": 1,
+  "generator_version": "1",
+  "repository": "https://github.com/gmkurtzer/hdae",
+  "revision": "12d1a3389e74642dddee47a6cc4cb217f55f1144",
+  "version": "0.1.1",
+  "license": "Apache-2.0",
+  "interpretation": "Agent-reviewed source interpretation commissioned on 2026-11-01. This is reviewed authoring input, not human release approval, upstream endorsement, or runtime certification.",
+  "coverage_limit": "Every canonical level-two/three heading outside fenced examples is classified. Heading and quotation coverage detects stale or omitted registered fragments, not every possible semantic requirement. Human semantic review remains necessary on updates.",
+  "sources": [
+    {
+      "source_id": "skill",
+      "upstream_path": "skills/hdae-development/SKILL.md",
+      "snapshot_path": "content/source/upstream/SKILL.md",
+      "sha256": "5d44a0a931c634b7395f008136e600c04342937fec7f9cd958383cd0d91002da",
+      "normative": true
+    },
+    {
+      "source_id": "method",
+      "upstream_path": "skills/hdae-development/references/hdae-method.md",
+      "snapshot_path": "content/source/upstream/hdae-method.md",
+      "sha256": "ff87f9ae91bf524c4dea29872610282a9dca66b6e859eafa4180f2795d589c36",
+      "normative": true
+    },
+    {
+      "source_id": "version",
+      "upstream_path": "VERSION",
+      "snapshot_path": "content/source/upstream/VERSION",
+      "sha256": "80447316529fc62014fbaa047fb67c51ac30e32830cda370405349d8d66d196c",
+      "normative": false
+    },
+    {
+      "source_id": "license",
+      "upstream_path": "LICENSE",
+      "snapshot_path": "content/source/upstream/LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "normative": false
+    }
+  ],
+  "artifacts": [
+    {
+      "role": "product_intent",
+      "path": "hdae/PROJECT.md",
+      "responsibility": "Users, outcomes, scope, non-goals, success; link existing authority instead of duplicating it.",
+      "template_path": "content/templates/PROJECT.md"
+    },
+    {
+      "role": "architecture",
+      "path": "hdae/ARCHITECTURE.md",
+      "responsibility": "Boundaries, invariants, constraints, decisions, and authoritative architecture links.",
+      "template_path": "content/templates/ARCHITECTURE.md"
+    },
+    {
+      "role": "strategy",
+      "path": "hdae/PLAN.md",
+      "responsibility": "Project-wide strategy and dependencies; no generated competing todo/done ledger.",
+      "template_path": "content/templates/PLAN.md"
+    },
+    {
+      "role": "checkpoint",
+      "path": "hdae/STATUS.md",
+      "responsibility": "Active work, exact status, last evidence, limitations, decisions, next action and context recovery.",
+      "template_path": "content/templates/STATUS.md"
+    },
+    {
+      "role": "gate",
+      "path": "hdae/gates-{todo,done,deferred}/<decimal-position>-<short-slug>.md",
+      "responsibility": "One authoritative record per gate; its path owns lifecycle and exact decimal order.",
+      "template_path": "content/templates/gate.md"
+    },
+    {
+      "role": "use_cases",
+      "path": "existing authoritative workflow document or linked project intent",
+      "responsibility": "Optional user workflow role, never mandatory ceremony or a competing product authority.",
+      "template_path": "content/templates/use_cases.md"
+    },
+    {
+      "role": "decision",
+      "path": "existing authoritative decision record convention",
+      "responsibility": "Optional durable explanation of consequential choices and affected scope.",
+      "template_path": "content/templates/decision.md"
+    }
+  ],
+  "gate_policy": {
+    "sections": [
+      "Source",
+      "Goal",
+      "Approved scope",
+      "Non-goals",
+      "Completed work",
+      "Remaining work",
+      "Acceptance criteria",
+      "Verification plan",
+      "Evidence",
+      "Decisions and limitations",
+      "Delivery strategy",
+      "Review policy and outcome"
+    ],
+    "directories": ["gates-todo", "gates-done", "gates-deferred"],
+    "filename": "<decimal-position>-<short-slug>.md",
+    "ordering": "exact_decimal",
+    "states": ["not run", "partial", "failed", "blocked", "passed", "accepted", "closed", "deferred"],
+    "closure": "Technical passage remains todo until authenticated checkpoint acceptance or confirmed delegated closure; delegation is not individual review.",
+    "history": "Done records are immutable; corrections use new gates. Explicit human reopening moves the unchanged record to todo before edits. Deferral retains its reason and return condition."
+  },
+  "rules": [
+    {
+      "rule_id": "responsibility",
+      "requirement": "Human direction owns product intent, architecture, priorities, risk and review. Models propose, investigate and iterate; evidence, not preference, establishes technical passage.",
+      "category": "human_judgment",
+      "references": [
+        {"source_id": "method", "heading": "Division of responsibility", "quote": "human preferences do not make a gate pass without evidence."}
+      ]
+    },
+    {
+      "rule_id": "method_roles",
+      "requirement": "Establish, Implement, Verify, Maintain and Retrospective are cross-artifact responsibilities. Select the work with the human when unclear; preserve existing authoritative document conventions.",
+      "category": "model_instruction",
+      "references": [
+        {"source_id": "skill", "heading": "Select the operation", "quote": "Establish:"},
+        {"source_id": "method", "heading": "Minimal artifact model", "quote": "Link to authoritative material rather than duplicating it."}
+      ]
+    },
+    {
+      "rule_id": "discovery",
+      "requirement": "Discover intent adaptively through small question rounds and repository inspection. Confirm the resulting brief; do not turn assumptions into authoritative decisions.",
+      "category": "human_judgment",
+      "references": [
+        {"source_id": "skill", "heading": "Discovery interview", "quote": "Prefer one to three related questions at a time."},
+        {"source_id": "method", "heading": "Iterative discovery", "quote": "Do not fill gaps with plausible assumptions simply to reach coding faster."}
+      ]
+    },
+    {
+      "rule_id": "proportional_plan",
+      "requirement": "Discuss outcome, scope, evidence and stopping point before work. Small bounded requests need concise plans, not durable gate ceremony; multiple loops, checkpoints or handoffs need gates. Communicate uncertainty and evidence-based estimates for long work.",
+      "category": "human_judgment",
+      "references": [
+        {"source_id": "skill", "heading": "Discuss the plan before work", "quote": "scale its detail to the work."},
+        {"source_id": "skill", "heading": "Decide whether a gate is needed", "quote": "Not every request requires a gate."},
+        {"source_id": "method", "heading": "Scale planning to the work", "quote": "Every task needs a plan discussion before execution"}
+      ]
+    },
+    {
+      "rule_id": "ambiguity",
+      "requirement": "Surface conflicting instructions, goals, scope, criteria or observations. Ask a focused question and pause affected work; unrelated work must not prejudge the answer. User direction cannot override higher-priority authority.",
+      "category": "human_judgment",
+      "references": [
+        {"source_id": "skill", "heading": "Ask the user when direction is unclear", "quote": "Continue to obey the prevailing higher-priority instruction"}
+      ]
+    },
+    {
+      "rule_id": "convergence",
+      "requirement": "Continue credible bounded experiments, changing hypotheses, inputs or diagnostics on retry. Preserve failures and choose informative alternatives. Stop for missing authority, disproportionate cost, stalled alternatives or the review boundary; difficulty alone is not a blocker.",
+      "category": "model_instruction",
+      "references": [
+        {"source_id": "skill", "heading": "Converge without spinning", "quote": "Never repeat an unchanged attempt."},
+        {"source_id": "method", "heading": "Convergence and stall control", "quote": "A retry must deliberately change at least one hypothesis, input, implementation, environment, or diagnostic"}
+      ]
+    },
+    {
+      "rule_id": "corrective_work",
+      "requirement": "Preserve out-of-scope reproduction, impact and blocking relationships; propose the smallest corrective gate with verification and delivery. Prior approval does not authorize corrective work. Only explicit human choice may amend an open gate; closed records require a new gate or guarded reopen.",
+      "category": "human_judgment",
+      "references": [
+        {"source_id": "skill", "heading": "Turn discovered defects into proposed gates", "quote": "Prior approval of the active gate or batch does not authorize the new work."},
+        {"source_id": "method", "heading": "Defects discovered during gate execution", "quote": "Finding an out-of-scope defect is useful evidence, not permission to fix it"}
+      ]
+    },
+    {
+      "rule_id": "context_recovery",
+      "requirement": "Recover full active method instructions, repository instructions, required references and live project checkpoints on start, compaction or handoff. Reconcile conflicts with the human. Persist the active instruction identity and reload requirement; a checkpoint does not prove a mode was reloaded.",
+      "category": "model_instruction",
+      "references": [
+        {"source_id": "skill", "heading": "Recover context before continuing", "quote": "Compacted chat or a remembered summary is not a substitute for those sources."},
+        {"source_id": "method", "heading": "Context-recovery protocol", "quote": "A checkpoint restores project state"}
+      ]
+    },
+    {
+      "rule_id": "ledger_layout",
+      "requirement": "One authoritative Markdown gate under root hdae. Paths encode lifecycle and exact decimal position, with unique positions and no redundant routing metadata or generated todo/done indexes. Open does not mean runnable.",
+      "category": "deterministic",
+      "references": [
+        {"source_id": "skill", "heading": "Maintain the filesystem gate ledger", "quote": "Do not duplicate path-derived lifecycle or order in gate indexes or metadata fields."},
+        {"source_id": "method", "heading": "Filesystem gate ledger", "quote": "never reuse a position."}
+      ]
+    },
+    {
+      "rule_id": "ledger_history",
+      "requirement": "Do not edit, rename, reorder or delete closed gates. Reopen only by explicit human direction, moving the unchanged record first. Deferral and reactivation retain reason and return condition; passage alone never moves a checkpoint to done.",
+      "category": "deterministic",
+      "references": [
+        {"source_id": "method", "heading": "Filesystem gate ledger", "quote": "Files in `gates-done/` are locked historical records."}
+      ]
+    },
+    {
+      "rule_id": "gate_template",
+      "requirement": "Authored gate templates retain every substantive upstream section without duplicating path-derived lifecycle or order. Template validation is not validation of a target project's live gate or its semantics.",
+      "category": "artifact",
+      "references": [
+        {"source_id": "method", "heading": "Filesystem gate ledger", "quote": "The gate body owns substantive information, not routing metadata:"}
+      ]
+    },
+    {
+      "rule_id": "delivery_strategy",
+      "requirement": "Record current-branch or dedicated-branch choice, relevant base and PR intent before implementation. Plan coherent commits and record actual delivery or deviations. Branch choice alone does not authorize publication; repository signing and commit conventions remain authoritative.",
+      "category": "human_judgment",
+      "references": [
+        {"source_id": "skill", "heading": "Choose gate delivery strategy", "quote": "Record the planned commits before work"},
+        {"source_id": "method", "heading": "Delivery strategy and commit structure", "quote": "A branch choice does not authorize pushing or opening a pull request"}
+      ]
+    },
+    {
+      "rule_id": "issue_delivery",
+      "requirement": "Issue/PR-originated work requires a dedicated branch and PR per independently reviewable fix; combine only inseparable root causes. Follow authorized closing references, never push to the default branch or close/merge PRs. Under saved automatic policy, missing remote branch or PR means incomplete delivery, not closure.",
+      "category": "unsupported",
+      "references": [
+        {"source_id": "skill", "heading": "Choose gate delivery strategy", "quote": "Never push directly to the repository's default branch"}
+      ]
+    },
+    {
+      "rule_id": "batch_authority",
+      "requirement": "Propose numeric ordered batches and dependencies with checkpoint/delegated boundaries and obtain exact human confirmation. Delegation covers only its scope and gates, never failed criteria or external permissions; reapprove material map changes. Later independent gates proceed only under explicit policy when failures cannot invalidate them.",
+      "category": "deterministic",
+      "references": [
+        {"source_id": "skill", "heading": "Align batches and checkpoints", "quote": "Ask the human to confirm both the batch and checkpoint map."},
+        {"source_id": "method", "heading": "Multi-gate batches and checkpoint policy", "quote": "Batch confirmation expires when the included gates finish or the agreed scope or checkpoint map changes."}
+      ]
+    },
+    {
+      "rule_id": "standing_review",
+      "requirement": "Scheduled PR/issue review may use narrowly human-confirmed standing delegation with repository, risk, scope, evidence, delivery and review boundaries. Meaningful blockers pause it; routine gate or test choices do not. Private security findings use sanitized records, never public confidential detail.",
+      "category": "unsupported",
+      "references": [
+        {"source_id": "skill", "heading": "Mandatory gate alignment", "quote": "Do not write confidential vulnerability details to a public repository"},
+        {"source_id": "method", "heading": "Multi-gate batches and checkpoint policy", "quote": "A scheduled PR/issue review may instead use a human-confirmed standing delegation"}
+      ]
+    },
+    {
+      "rule_id": "gate_alignment",
+      "requirement": "Inspect the repository and align goal, scope, exclusions, dependencies, deliverables, criteria, expected evidence, delivery and review. Audit relevant surfaces or explicitly mark not applicable; silence or approval of the idea is not authorization. Material requirements changes require renewed direction.",
+      "category": "human_judgment",
+      "references": [
+        {"source_id": "skill", "heading": "Mandatory gate alignment", "quote": "Do not treat silence, general enthusiasm, or approval of the overall idea as approval of a gate batch or checkpoint map."},
+        {"source_id": "method", "heading": "Human gate-alignment conversation", "quote": "This is a completeness check, not permission to expand the user's goal."}
+      ]
+    },
+    {
+      "rule_id": "durable_context",
+      "requirement": "Persist confirmed intent, architecture, project strategy, gate state and resumable status in the minimal authoritative files. Link existing facts instead of copying. Reconcile newer human direction, report uncommitted state honestly and update checkpoints at boundaries.",
+      "category": "artifact",
+      "references": [
+        {"source_id": "skill", "heading": "Persist shared understanding", "quote": "Do not rely on chat history as the project record."},
+        {"source_id": "method", "heading": "Durable context and continuation", "quote": "Persisted state never overrides a newer explicit human decision."}
+      ]
+    },
+    {
+      "rule_id": "establish",
+      "requirement": "Discover and confirm outcomes, inspect existing behavior and risks, establish a reproducible baseline, and propose bounded milestones with positive/negative criteria, regressions and stopping points. Planning does not authorize implementation.",
+      "category": "model_instruction",
+      "references": [
+        {"source_id": "skill", "heading": "Establish the project", "quote": "Planning alone does not authorize implementation."}
+      ]
+    },
+    {
+      "rule_id": "implementation",
+      "requirement": "Implement coherent in-scope hypotheses, diagnose failures, add regressions and reconcile all deliverables with fresh evidence, including docs and installed/generated copies. Update status and return for changed architecture, scope, criteria or consequential external actions; advance only under confirmed batch policy.",
+      "category": "model_instruction",
+      "references": [
+        {"source_id": "skill", "heading": "Implement an approved gate or batch", "quote": "Implement the narrowest coherent change that can satisfy the gate."}
+      ]
+    },
+    {
+      "rule_id": "verification",
+      "requirement": "Mandatory criteria require actual successful verification from clean relevant inputs and fresh evidence. Use precise not-run, partial, failed or blocked results; reconcile all criteria and delivery before passage. Maintain architecture through proportionate verified corrections.",
+      "category": "deterministic",
+      "references": [
+        {"source_id": "skill", "heading": "Verify and maintain", "quote": "A gate cannot pass until its authoritative file records every criterion and the fresh evidence that satisfied it."}
+      ]
+    },
+    {
+      "rule_id": "retrospective",
+      "requirement": "Distinguish human direction, agent proposals, executable evidence and failure-driven corrections. Improve process only where evidence demonstrates recurring need; observational examples do not establish general superiority.",
+      "category": "model_instruction",
+      "references": [
+        {"source_id": "skill", "heading": "Retrospective", "quote": "Improve documents, tests, gates, or repository instructions only when the evidence shows a recurring need."}
+      ]
+    },
+    {
+      "rule_id": "traceability",
+      "requirement": "Long projects connect goals, gates, criteria, planned verification, tasks and evidence. Perform forward, reverse, coverage and orphan reviews; retain removed scope and its reason. Mechanical links cannot prove semantic completeness.",
+      "category": "human_judgment",
+      "references": [
+        {"source_id": "method", "heading": "Traceability and completeness for long projects", "quote": "Every acceptance criterion must have planned verification, planned work, and fresh evidence."}
+      ]
+    },
+    {
+      "rule_id": "gate_quality",
+      "requirement": "Choose observable, bounded, falsifiable, executable and regressive criteria with controlled fixtures, explicit outcomes and repeatable procedures. Document deterministic exceptions, human judgment and external dependencies; human review does not replace reasonable automation.",
+      "category": "human_judgment",
+      "references": [
+        {"source_id": "method", "heading": "Gate quality", "quote": "Human acceptance evaluates direction and subjective quality; it does not replace reasonable automated checks."}
+      ]
+    },
+    {
+      "rule_id": "closed_loop",
+      "requirement": "Human direction governs the outer loop; bounded implement/build/observe/diagnose/revise/verify work belongs to the inner loop. Return at checkpoint, batch end, missing decision or evidence/scope boundary without removing engineering autonomy.",
+      "category": "model_instruction",
+      "references": [
+        {"source_id": "method", "heading": "Closed-loop execution", "quote": "The agent may repeat the inner loop without hand-holding while it remains inside the approved gate."}
+      ]
+    },
+    {
+      "rule_id": "completion_boundary",
+      "requirement": "Passed means every mandatory criterion ran and succeeded. Accepted requires human review of a passed checkpoint; closed requires acceptance or confirmed delegation. Time, effort and near-success do not complete gates. Report exact state, evidence, incomplete work and next decision; passage authorizes advancement only under confirmed batch policy.",
+      "category": "deterministic",
+      "references": [
+        {"source_id": "method", "heading": "Completion language", "quote": "Time spent, code volume, or near-success does not complete a gate."}
+      ]
+    },
+    {
+      "rule_id": "installed_skill_update",
+      "requirement": "Upstream copied-skill installation uses its installer, two linked discovery roots, ownership checks and full reload. Do not force over local edits without explicit authorization. This installation mechanism is not the Lisa backend and is not executed by this pack.",
+      "category": "unsupported",
+      "references": [
+        {"source_id": "skill", "heading": "Update an installed HDAE copy", "quote": "Do not add `--force` without explicit human authorization"}
+      ]
+    },
+    {
+      "rule_id": "read_only_updates",
+      "requirement": "Checking for updates is read-only and separate from installation. Distinguish upstream changes from local edits and comparison errors. Lisa adapts this to explicit commit snapshots and reviewed diffs, never automatic floating-main updates.",
+      "category": "unsupported",
+      "references": [
+        {"source_id": "skill", "heading": "Check HDAE for updates", "quote": "never combine checking and updating without the human's request."}
+      ]
+    }
+  ]
+}

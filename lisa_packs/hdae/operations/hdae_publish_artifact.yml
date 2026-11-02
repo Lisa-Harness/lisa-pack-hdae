@@ -1,0 +1,6 @@
+operation_id: hdae_publish_artifact
+pack_id: lisa-pack-hdae
+description: Publish a revision-guarded HDAE project artifact without authorizing execution.
+module_path: lisa_packs.hdae.operations.hdae_publish_artifact
+effect: write
+exportable: true

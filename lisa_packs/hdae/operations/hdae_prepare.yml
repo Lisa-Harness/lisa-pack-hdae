@@ -1,0 +1,8 @@
+operation_id: hdae_prepare
+pack_id: lisa-pack-hdae
+description: Select authorized file-backed work and prepare an exclusively owned coding worktree.
+module_path: lisa_packs.hdae.operations.hdae_prepare
+effect: write
+tool_ids: [coding_create_worktree, coding_prepare_workspace]
+timeout_seconds: 1800
+exportable: true

@@ -1,0 +1,6 @@
+operation_id: hdae_status
+pack_id: lisa-pack-hdae
+description: Inspect the current file-backed project and gate lifecycle without making passage claims.
+module_path: lisa_packs.hdae.operations.hdae_status
+effect: read
+exportable: true

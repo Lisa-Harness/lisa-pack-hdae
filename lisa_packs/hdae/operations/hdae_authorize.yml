@@ -1,0 +1,8 @@
+operation_id: hdae_authorize
+pack_id: lisa-pack-hdae
+description: Authorize the exact gate revision and its review policy through operator approval.
+module_path: lisa_packs.hdae.operations.hdae_authorize
+effect: write
+approval_required: true
+approval_preview: Authorize this exact HDAE gate and review policy.
+exportable: true

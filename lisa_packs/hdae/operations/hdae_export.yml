@@ -1,0 +1,6 @@
+operation_id: hdae_export
+pack_id: lisa-pack-hdae
+description: Read a gate's structured evidence and identify incomplete accounting explicitly.
+module_path: lisa_packs.hdae.operations.hdae_export
+effect: read
+exportable: true

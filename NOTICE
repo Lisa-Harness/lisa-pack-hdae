@@ -1,0 +1,21 @@
+Lisa HDAE source binding and authored content
+
+This adaptation includes unmodified source data and interpreted material from
+Human-Directed Agentic Engineering (HDAE) by Gregory M. Kurtzer:
+https://github.com/gmkurtzer/hdae
+Revision: 12d1a3389e74642dddee47a6cc4cb217f55f1144
+Upstream version: 0.1.1
+License: Apache License, Version 2.0 (see LICENSE).
+
+Canonical included sources:
+skills/hdae-development/SKILL.md
+skills/hdae-development/references/hdae-method.md
+VERSION
+LICENSE
+
+Lisa-specific modifications consist of the reviewed interpretation manifest,
+separate capability bindings, artifact/mode templates, deterministic authoring
+validator/generator, conformance tests, and maintenance documentation.
+The adjacent pinned source snapshots are unmodified. There is no upstream root
+NOTICE file at this revision. No upstream endorsement or runtime certification
+is implied. Applicable upstream attribution and license are retained.

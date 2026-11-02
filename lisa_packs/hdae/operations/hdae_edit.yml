@@ -1,0 +1,7 @@
+operation_id: hdae_edit
+pack_id: lisa-pack-hdae
+description: Apply source edits only inside the current gate's approved path scope.
+module_path: lisa_packs.hdae.operations.hdae_edit
+effect: write
+tool_ids: [coding_edit_files]
+exportable: true

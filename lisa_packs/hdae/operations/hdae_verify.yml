@@ -1,0 +1,8 @@
+operation_id: hdae_verify
+pack_id: lisa-pack-hdae
+description: Reconcile fresh gate evidence and the real checked commit before completion.
+module_path: lisa_packs.hdae.operations.hdae_verify
+effect: write
+tool_ids: [coding_commit]
+timeout_seconds: 1800
+exportable: true

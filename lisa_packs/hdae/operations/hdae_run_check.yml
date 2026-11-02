@@ -1,0 +1,8 @@
+operation_id: hdae_run_check
+pack_id: lisa-pack-hdae
+description: Run a session-configured check and record actual runner observations for this gate.
+module_path: lisa_packs.hdae.operations.hdae_run_check
+effect: write
+tool_ids: [coding_run_check]
+timeout_seconds: 1800
+exportable: true

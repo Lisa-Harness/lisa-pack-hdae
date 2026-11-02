@@ -1,0 +1,6 @@
+operation_id: hdae_define_gate
+pack_id: lisa-pack-hdae
+description: Validate and publish a bounded gate proposal with explicit criteria and checks.
+module_path: lisa_packs.hdae.operations.hdae_define_gate
+effect: write
+exportable: true
