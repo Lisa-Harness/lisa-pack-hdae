@@ -135,9 +135,11 @@ jobs:
         working-directory: lisa
 
       - name: Whole-scenario E2E (deterministic, no live)
-        working-directory: lisa
         env:
           PYTHONPATH: ${{ github.workspace }}/lisa-packs/coding:${{ github.workspace }}/lisa-packs/bwrap
           HDAE_TEST_CODING_ROOT: ${{ github.workspace }}/lisa-packs/coding/lisa_packs/coding
           HDAE_TEST_BWRAP_ROOT: ${{ github.workspace }}/lisa-packs/bwrap/lisa_packs/bwrap
-        run: uv run --project lisa pytest ../lisa_packs/hdae/tests/test_scenario_e2e.py ../lisa_packs/hdae/tests/test_live_scenario.py -m "not live" --tb=short -v
+        # pytest runs from the pack root (the bash/bwrap convention): the
+        # pack's pyproject.toml sets pythonpath = ["."] and --project lisa
+        # resolves the framework checkout beside it.
+        run: uv run --project lisa pytest lisa_packs/hdae/tests/test_scenario_e2e.py lisa_packs/hdae/tests/test_live_scenario.py -m "not live" --tb=short -v
