@@ -55,6 +55,28 @@ from kernel import ipsar_fsm, routing_vocabulary
 _MAX_APPROVAL_CONTINUATIONS = 8
 _RECONCILIATION_REQUESTS = 2
 
+# The whole scenario composes the real coding and bwrap pack providers,
+# so their checkouts must be supplied explicitly. CI checks them out as
+# siblings and exports these; without them the scenario cannot run and
+# must skip (not error) so the rest of the suite stays meaningful.
+_CODING_ROOT = os.environ.get("HDAE_TEST_CODING_ROOT")
+_BWRAP_ROOT = os.environ.get("HDAE_TEST_BWRAP_ROOT")
+_E2E_AVAILABLE = bool(_CODING_ROOT) and bool(_BWRAP_ROOT)
+_E2E_REASON = (
+    "requires the coding and bwrap pack checkouts via "
+    "HDAE_TEST_CODING_ROOT and HDAE_TEST_BWRAP_ROOT"
+)
+
+
+def _e2e_coding_root() -> Path:
+    assert _CODING_ROOT
+    return Path(_CODING_ROOT)
+
+
+def _e2e_bwrap_root() -> Path:
+    assert _BWRAP_ROOT
+    return Path(_BWRAP_ROOT)
+
 
 @dataclass
 class Completion:
@@ -198,8 +220,8 @@ class Scenario:
 
     def _catalogs(self, monkeypatch: pytest.MonkeyPatch) -> None:
         root = get_content_root()
-        coding = Path(os.environ["HDAE_TEST_CODING_ROOT"])
-        bwrap = Path(os.environ["HDAE_TEST_BWRAP_ROOT"])
+        coding = _e2e_coding_root()
+        bwrap = _e2e_bwrap_root()
         operation_data = json.loads(build_operation_catalog_json(resolve_operation_roots([root])))
         tool_data = json.loads(build_tool_catalog_json(resolve_tool_roots([coding, bwrap])))
         monkeypatch.setattr(
@@ -376,6 +398,7 @@ class Scenario:
 
 
 @pytest.mark.asyncio
+@pytest.mark.skipif(not _E2E_AVAILABLE, reason=_E2E_REASON)
 async def test_whole_hdae_scenario(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     """Exercise publication, exact approval, worker failure/fix, completion, and human review."""
     scenario = Scenario(tmp_path, monkeypatch)

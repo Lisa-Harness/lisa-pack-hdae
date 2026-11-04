@@ -8,7 +8,16 @@ version = "0.1.0"
 license = "Apache-2.0"
 description = "Artifact-driven HDAE engineering with harness-verified gates"
 requires-python = ">=3.11"
-dependencies = ["lisa-harness-kernel", "lisa-harness-sdk", "pydantic>=2", "PyYAML>=6"]
+# The mode contract this pack generates (pre_turn_failure_policy: abort,
+# task_completion: checked_commit) and the WorkspaceDocuments /
+# verify_checked_commit seams it imports first exist in framework v0.5.1;
+# earlier resolutions break the generated hdae_execute mode at load time.
+dependencies = [
+	"lisa-harness-kernel>=0.5.1",
+	"lisa-harness-sdk>=0.5.1",
+	"pydantic>=2",
+	"PyYAML>=6",
+]
 
 [project.entry-points."lisa.extensions.content_roots"]
 hdae = "lisa_packs.hdae:get_content_root"
@@ -16,7 +25,8 @@ hdae = "lisa_packs.hdae:get_content_root"
 [project.optional-dependencies]
 dev = [
 	"pytest>=8", "pytest-asyncio>=0.23", "build>=1", "openai",
-	"python-dotenv", "httpx2", "lisa-harness-runtime",
+	"python-dotenv", "httpx2", "lisa-harness-runtime>=0.5.1",
+	"lisa-harness-packstest>=0.5.1",
 ]
 
 [tool.setuptools.packages.find]
@@ -24,11 +34,16 @@ where = ["."]
 include = ["lisa_packs", "lisa_packs.hdae*"]
 
 [tool.setuptools.package-data]
-"lisa_packs.hdae" = ["modes/**/*.md", "operations/**/*.yml", "content/**/*", "tools/**/*.yml"]
+# No tools/ glob: the pack deliberately exposes no raw tools; all coding
+# access flows through guarded hdae_* operations.
+"lisa_packs.hdae" = ["modes/**/*.md", "operations/**/*.yml", "content/**/*"]
 
 [tool.pytest.ini_options]
 pythonpath = ["."]
 testpaths = ["lisa_packs/hdae/tests"]
 asyncio_mode = "auto"
 asyncio_default_fixture_loop_scope = "function"
-markers = ["live: requires a configured Lisa host or QEMU project"]
+markers = [
+	"live: requires a configured Lisa host or QEMU project",
+	"eval: deterministic agent regression evals (no model calls, no I/O)",
+]

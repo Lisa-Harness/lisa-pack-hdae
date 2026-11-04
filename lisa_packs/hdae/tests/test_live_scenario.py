@@ -32,7 +32,12 @@ from kernel.turn_phases._completion_contract import AcceptTurn
 from kernel.turn_runner import ContextSeams, TurnHooks, execute_approved_invocation, run_turn
 from lisa_packs.hdae import get_content_root
 from lisa_packs.hdae.engine import GateEngine
-from lisa_packs.hdae.tests.test_scenario_e2e import Scenario, git
+from lisa_packs.hdae.tests.test_scenario_e2e import (
+    _E2E_AVAILABLE,
+    _E2E_REASON,
+    Scenario,
+    git,
+)
 from openai import AsyncOpenAI
 from runtime.code_artifacts import verify_checked_commit
 from runtime.model_runtime import StubModelDefinition, resolve_model
@@ -420,6 +425,7 @@ async def exercise(
 
 
 @pytest.mark.asyncio
+@pytest.mark.skipif(not _E2E_AVAILABLE, reason=_E2E_REASON)
 async def test_scripted_demo(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     """Prove the recording path without network calls or accepting the gate."""
     receipt = await exercise(Scenario(tmp_path, monkeypatch), ScriptedGateway())

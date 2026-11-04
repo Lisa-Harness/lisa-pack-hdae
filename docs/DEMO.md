@@ -45,12 +45,15 @@ has certified the current implementation.
 ## Offline Reproduction
 
 The driver is [the live scenario test](../lisa_packs/hdae/tests/test_live_scenario.py).
-From the lisa-packs checkout, use the existing framework environment and sibling
-coding pack. Git commands execute only inside disposable fixture repositories.
+From the lisa-packs checkout, use the existing framework environment and the
+public coding pack cloned as a sibling
+(`git clone https://github.com/Lisa-Harness/lisa-pack-coding.git
+../lisa-pack-coding`). Git commands execute only inside disposable fixture
+repositories.
 
 ```sh
-export PYTHONPATH="$PWD/hdae:$PWD/../lisa-packs-wip/coding:$PWD/bwrap"
-export HDAE_TEST_CODING_ROOT="$PWD/../lisa-packs-wip/coding/lisa_packs/coding"
+export PYTHONPATH="$PWD/hdae:$PWD/../lisa-pack-coding:$PWD/bwrap"
+export HDAE_TEST_CODING_ROOT="$PWD/../lisa-pack-coding/lisa_packs/coding"
 export HDAE_TEST_BWRAP_ROOT="$PWD/bwrap/lisa_packs/bwrap"
 ../lisa/.venv/bin/python -m pytest -c hdae/pyproject.toml \
    hdae/lisa_packs/hdae/tests/test_live_scenario.py \

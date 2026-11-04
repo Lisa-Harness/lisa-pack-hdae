@@ -106,28 +106,28 @@ Full spec release claims require separate completed contracts and evidence.
 
 ## Validation Commands
 
-Run from the pack directory; use the configured framework venv, not global pip:
+Assume the framework is cloned as a sibling `../lisa` with its venv synced
+(`uv sync --extra dev`). Run the manifest commands from the pack directory
+and the lint/type commands from the framework directory — ruff and mypy
+resolve the shared `[tool.ruff]`/`[tool.mypy]` settings from their working
+directory, which is the same shape CI uses:
 
 ```sh
-PYTHONPATH=. /home/adam/Code/lisa/.venv/bin/python -m lisa_packs.hdae.manifest validate
-PYTHONPATH=. /home/adam/Code/lisa/.venv/bin/python -m lisa_packs.hdae.manifest generate
-PYTHONPATH=. /home/adam/Code/lisa/.venv/bin/python -m lisa_packs.hdae.manifest check
-/home/adam/Code/lisa/.venv/bin/python -m pytest \
+# From the pack directory:
+PYTHONPATH=. ../lisa/.venv/bin/python -m lisa_packs.hdae.manifest validate
+PYTHONPATH=. ../lisa/.venv/bin/python -m lisa_packs.hdae.manifest generate
+PYTHONPATH=. ../lisa/.venv/bin/python -m lisa_packs.hdae.manifest check
+../lisa/.venv/bin/python -m pytest \
    lisa_packs/hdae/tests/test_manifest.py \
    lisa_packs/hdae/tests/test_catalog.py -q -p no:cacheprovider
-/home/adam/Code/lisa/.venv/bin/python -m ruff format --check \
-   --config /home/adam/Code/lisa/pyproject.toml \
-   lisa_packs/hdae/manifest.py \
-   lisa_packs/hdae/tests/test_manifest.py lisa_packs/hdae/tests/test_catalog.py
-/home/adam/Code/lisa/.venv/bin/python -m ruff check \
-   --config /home/adam/Code/lisa/pyproject.toml \
-   lisa_packs/hdae/manifest.py \
-   lisa_packs/hdae/tests/test_manifest.py lisa_packs/hdae/tests/test_catalog.py
-MYPYPATH=. /home/adam/Code/lisa/.venv/bin/python -m mypy \
-   --strict --follow-imports=silent \
-   --config-file /home/adam/Code/lisa/pyproject.toml \
-   lisa_packs/hdae/manifest.py \
-   lisa_packs/hdae/tests/test_manifest.py lisa_packs/hdae/tests/test_catalog.py
+
+# From the framework directory (targets are pack-relative):
+../lisa/.venv/bin/python -m ruff format --check \
+   ../<pack-checkout>/lisa_packs/hdae
+../lisa/.venv/bin/python -m ruff check \
+   ../<pack-checkout>/lisa_packs/hdae
+../lisa/.venv/bin/python -m mypy \
+   --exclude '(^|/)build/' ../<pack-checkout>/lisa_packs/hdae
 ```
 
 The report explicitly says `runtime_enforcement_verified: false`. A valid source

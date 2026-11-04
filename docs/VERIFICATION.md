@@ -12,15 +12,23 @@ The recording driver additionally lets the gateway choose the edit/check/verify
 sequence and stops before acceptance. Its operator approval choices are scripted
 and explicitly labeled. That adapter is test-only nested-operation reconciliation.
 
-Run offline from the parent lisa-packs checkout:
+Run offline from the parent lisa-packs checkout, with the public coding pack
+cloned as a sibling (`git clone https://github.com/Lisa-Harness/lisa-pack-coding.git
+../lisa-pack-coding`):
 
 ```sh
-export PYTHONPATH="$PWD/hdae:$PWD/../lisa-packs-wip/coding:$PWD/bwrap"
-export HDAE_TEST_CODING_ROOT="$PWD/../lisa-packs-wip/coding/lisa_packs/coding"
+export PYTHONPATH="$PWD/hdae:$PWD/../lisa-pack-coding:$PWD/bwrap"
+export HDAE_TEST_CODING_ROOT="$PWD/../lisa-pack-coding/lisa_packs/coding"
 export HDAE_TEST_BWRAP_ROOT="$PWD/bwrap/lisa_packs/bwrap"
 ../lisa/.venv/bin/python -m pytest -c hdae/pyproject.toml \
   hdae/lisa_packs/hdae/tests -m 'not live' -q -p no:cacheprovider
 ```
+
+The pack's own CI runs the same scenario standalone: it checks out the
+framework, the coding pack, and the bwrap pack as siblings and exports the
+same environment (see `.github/workflows/ci.yml`). Without those variables
+the scenario tests skip; the deterministic manifest, catalog, contracts,
+engine, operation, and eval tests still run.
 
 These integration tests require the real coding and bwrap providers, working
 Linux bubblewrap, and the modified framework. They do not substitute host

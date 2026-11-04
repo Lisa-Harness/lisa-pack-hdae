@@ -130,13 +130,14 @@ labeled test-operator decisions; this is not a production unattended policy.
 
 ## Offline Commands
 
-From the pack directory, with the configured Lisa framework environment:
+From the pack directory, with the framework checkout cloned as a sibling
+`../lisa` and its venv synced (`uv sync --extra dev`):
 
 ```sh
-PYTHONPATH=. /home/adam/Code/lisa/.venv/bin/python -m lisa_packs.hdae.manifest validate
-PYTHONPATH=. /home/adam/Code/lisa/.venv/bin/python -m lisa_packs.hdae.manifest generate
-PYTHONPATH=. /home/adam/Code/lisa/.venv/bin/python -m lisa_packs.hdae.manifest check
-/home/adam/Code/lisa/.venv/bin/python -m pytest \
+PYTHONPATH=. ../lisa/.venv/bin/python -m lisa_packs.hdae.manifest validate
+PYTHONPATH=. ../lisa/.venv/bin/python -m lisa_packs.hdae.manifest generate
+PYTHONPATH=. ../lisa/.venv/bin/python -m lisa_packs.hdae.manifest check
+../lisa/.venv/bin/python -m pytest \
   lisa_packs/hdae/tests/test_manifest.py \
   lisa_packs/hdae/tests/test_catalog.py -q -p no:cacheprovider
 ```
